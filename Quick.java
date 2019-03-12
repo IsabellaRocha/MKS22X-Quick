@@ -6,6 +6,8 @@ public class Quick {
     data[rando] = data[0];
     data[0] = pivot;
     while (start < end) {
+      System.out.println(Arrays.toString(data));
+      start++;
       if (data[start] > pivot) {
         while (data[end] > pivot && end > start) {
           end--;
@@ -15,32 +17,30 @@ public class Quick {
         data[start] = e;
         data[end] = s;
       }
-      start++;
     }
     if (data[start] < pivot) {
       data[0] = data[start];
       data[start] = pivot;
     }
-    else if (data[start - 1] < pivot){
+    else {
       data[0] = data[start - 1];
       data[start - 1] = pivot;
       start -= 1;
     }
-    else {
-      data[0] = data[start - 2];
-      data[start - 2] = pivot;
-      start -= 2;
-    }
     return start;
   }
-  public static int quickselect(int[] data, int k ) {
-    int compare = partition(data, 1, data.length - 1);
+  public static int quickselect(int[] data, int k) {
+    int start = 1;
+    int end = data.length - 1;
+    int compare = partition(data, start, end);
     while (compare != k) {
       if (compare < k) {
-        compare = partition(data, compare, data.length - 1);
+        start = compare + 1;
+        compare = partition(data, start, end);
       }
       else if (compare > k) {
-        compare = partition(data, 1, compare);
+        end = compare - 1;
+        compare = partition(data, start, end);
       }
     }
     return data[compare];
@@ -48,7 +48,14 @@ public class Quick {
   public static void main(String[] args) {
     int[] ary = { 2, 10, 15, 23, 0,  5};
     int[] ary2 = {999,999,999,4,1,0,3,2,999,999,999};
-    partition(ary, 1, ary.length - 1);
-    partition(ary2, 1, ary2.length - 1);
+    int[] ary3 = {17,61,67,47,93,12,20,4,44,78};
+    System.out.println(partition(ary3, 0, ary3.length - 1));
+//    System.out.println(partition(ary, 3, 4));
+//    System.out.println(quickselect(ary, 0));
+//    System.out.println(quickselect(ary, 1));
+//    System.out.println(quickselect(ary, 2));
+//    System.out.println(quickselect(ary, 3));
+//    System.out.println(quickselect(ary, 4));
+//    System.out.println(quickselect(ary, 5));
   }
 }
