@@ -31,13 +31,19 @@ public class Quick {
       data[start - 2] = pivot;
       start -= 2;
     }
-    System.out.println(pivot);
-    System.out.println(Arrays.toString(data));
     return start;
   }
   public static int quickselect(int[] data, int k ) {
     int compare = partition(data, 1, data.length - 1);
-    while (
+    while (compare != k) {
+      if (compare < k) {
+        compare = partition(data, compare, data.length - 1);
+      }
+      else if (compare > k) {
+        compare = partition(data, 1, compare);
+      }
+    }
+    return data[compare];
   }
   public static void main(String[] args) {
     int[] ary = { 2, 10, 15, 23, 0,  5};
