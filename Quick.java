@@ -1,9 +1,9 @@
 import java.util.*;
 public class Quick {
   public static int partition (int[] data, int start, int end) {
-    int rando = (int) (Math.random() * (end - start + 1) + start);
-    int pivot = data[rando];
-    data[rando] = data[0];
+    int rand = (int) (Math.random() * (end - start + 1) + start);
+    int pivot = data[rand];
+    data[rand] = data[0];
     data[0] = pivot;
     while (start < end) {
       start++;
@@ -16,6 +16,15 @@ public class Quick {
         data[start] = e;
         data[end] = s;
       }
+      if (data[start] == pivot) {
+        int rando = (int) (Math.random() * 2);
+        if (rando == 0) {
+          int s = data[start];
+          int e = data[end];
+          data[start] = e;
+          data[end] = s;
+        }
+      }
     }
     if (data[start] < pivot) {
       data[0] = data[start];
@@ -26,6 +35,7 @@ public class Quick {
       data[start - 1] = pivot;
       start -= 1;
     }
+    System.out.println(Arrays.toString(data));
     return start;
   }
   public static int quickselect(int[] data, int k) {
@@ -47,13 +57,14 @@ public class Quick {
     int[] ary = { 2, 10, 15, 23, 0,  5};
     int[] ary2 = {999,999,999,4,1,0,3,2,999,999,999};
     int[] ary3 = {17,61,67,47,93,12,20,4,44,78};
+    int[] ary4 = {1, 2, 3, 4, 5, 6, 7, 8};
 //    System.out.println(partition(ary3, 0, ary3.length - 1));
-//    System.out.println(partition(ary, 0, ary.length - 1));
-    System.out.println(quickselect(ary, 0));
-    System.out.println(quickselect(ary, 1));
-    System.out.println(quickselect(ary, 2));
-    System.out.println(quickselect(ary, 3));
-    System.out.println(quickselect(ary, 4));
-    System.out.println(quickselect(ary, 5));
+    System.out.println(partition(ary2, 0, ary.length - 1));
+//    System.out.println(quickselect(ary4, 0));
+//    System.out.println(quickselect(ary4, 1));
+//    System.out.println(quickselect(ary4, 2));
+//    System.out.println(quickselect(ary4, 3));
+//    System.out.println(quickselect(ary4, 4));
+//    System.out.println(quickselect(ary4, 5));
   }
 }
