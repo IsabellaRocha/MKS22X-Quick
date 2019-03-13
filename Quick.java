@@ -2,12 +2,13 @@ import java.util.*;
 public class Quick {
   public static int partition (int[] data, int start, int end) {
     int idx = 0;
-    if ((data[start] < data[end - start] && data[end - start] < data[end]) ||
-        (data[end] < data[end-start] && data[end - start] < data[start])) idx = end - start;
-    if ((data[end] < data[start] && data[start] < data[end - start]) ||
-        (data[end - start] < data[start] && data[start] < data[end])) idx = start;
-    if ((data[end - start] < data[end] && data[end] < data[start]) ||
-        (data[start] < data[end] && data[end] < data[end - start])) idx = end;
+    int mid = ((end - start) / 2) + start;
+    if ((data[start] <= data[mid] && data[mid] <= data[end]) ||
+        (data[end] <= data[mid] && data[mid] <= data[start])) idx = mid;
+    if ((data[end] < data[start] && data[start] < data[mid]) ||
+        (data[mid] < data[start] && data[start] < data[end])) idx = start;
+    if ((data[mid] < data[end] && data[end] < data[start]) ||
+        (data[start] < data[end] && data[end] < data[mid])) idx = end;
     int pivot = data[idx];
     data[idx] = data[0];
     data[0] = pivot;
@@ -41,6 +42,7 @@ public class Quick {
       data[start - 1] = pivot;
       start -= 1;
     }
+//    System.out.println(pivot);
 //    System.out.println(Arrays.toString(data));
     return start;
   }
@@ -71,6 +73,6 @@ public class Quick {
     System.out.println(quickselect(ary, 2));
     System.out.println(quickselect(ary, 3));
     System.out.println(quickselect(ary, 4));
-    System.out.println(quickselect(ary, 5));
+    System.out.println(quickselect(ary3, 9));
   }
 }
