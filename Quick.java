@@ -34,9 +34,6 @@ public class Quick {
       data[start - 1] = pivot;
       start -= 1;
     }
-    System.out.println(pivot);
-    System.out.println(start);
-    System.out.println(Arrays.toString(data));
     return start;
   }
   public static int quickselect(int[] data, int k) {
@@ -77,7 +74,7 @@ public class Quick {
     }
     int pivot = partition(data, start, end);
     quicksortH(data, start, pivot - 1);
-    quicksortH(data, pivot + 1, end);
+    quicksortH(data, pivot, end);
   }
   public static void main(String[] args) {
     int[] ary = {2, 10, 15, 23, 0,  5};
@@ -86,12 +83,12 @@ public class Quick {
     int[] ary4 = {1, 2, 3, 4, 5, 6, 7, 8};
     quicksort(ary);
     System.out.println(Arrays.toString(ary));
-//    quicksort(ary2);
-//    System.out.println(Arrays.toString(ary2));
-//    quicksort(ary3);
-//    System.out.println(Arrays.toString(ary3));
-//    quicksort(ary4);
-//    System.out.println(Arrays.toString(ary4));
+    quicksort(ary2);
+    System.out.println(Arrays.toString(ary2));
+    quicksort(ary3);
+    System.out.println(Arrays.toString(ary3));
+    quicksort(ary4);
+    System.out.println(Arrays.toString(ary4));
 //    System.out.println(findMedian(ary3, 4, 5));
 //    System.out.println(partition(ary3, 0, ary3.length - 1));
 //    System.out.println(partition(ary, 0, ary.length - 1));
