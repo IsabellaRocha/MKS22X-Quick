@@ -5,26 +5,27 @@ public class Quick {
     Random rand = new Random();
     int pivot = findMedian(data, start, end);
     swap(data, pivot, start);
+    pivot = start;
     start++;
     while (start != end) {
       int check = -1;
-      if (data[start] == data[0]) {
+      if (data[start] == data[pivot]) {
         check = rand.nextInt(2);
       }
-      if (data[start] < data[0] || check == 0) {
+      if (data[start] < data[pivot] || check == 0) {
         start++;
       }
-      else if (data[start] > data[0] || check == 1) {
+      else if (data[start] > data[pivot] || check == 1) {
         swap(data, start, end);
         end--;
       }
     }
-    if (data[start] < data[0]) {
-      swap(data, start, 0);
+    if (data[start] < data[pivot]) {
+      swap(data, start, pivot);
       return start;
     }
     else {
-      swap(data, start - 1, 0);
+      swap(data, start - 1, pivot);
       return start - 1;
     }
   }
