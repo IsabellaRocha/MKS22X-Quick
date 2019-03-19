@@ -91,9 +91,24 @@ public class Quick {
     if (start >= end) {
       return;
     }
+    if (end - start <= 12) {
+      insertionsort(data, start, end);
+    }
     int pivot[] = partitionDutch(data, start, end);
     quicksortH(data, start, pivot[0] - 1);
     quicksortH(data, pivot[1] + 1, end);
+  }
+  public static void insertionsort(int[] ary, int start, int end) {
+    for (int idx = start + 1; idx < end + 1; idx++) {
+      int current = ary[idx]; // Storing value for later to move
+      int curIdx = idx - 1;
+      while (curIdx >= 0 && ary[curIdx] > current) {
+        ary[curIdx + 1] = ary[curIdx]; // Shifting values over
+        curIdx--;
+      }
+      ary[curIdx + 1] = current;
+    //  System.out.println(Arrays.toString(ary));
+    }
   }
   public static void main(String[]args){
   System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
