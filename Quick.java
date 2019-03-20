@@ -91,12 +91,14 @@ public class Quick {
     if (start >= end) {
       return;
     }
-    if (end - start <= 12) {
+    if (end - start <= 17) {
       insertionsort(data, start, end);
     }
-    int pivot[] = partitionDutch(data, start, end);
-    quicksortH(data, start, pivot[0] - 1);
-    quicksortH(data, pivot[1] + 1, end);
+    else {
+      int pivot[] = partitionDutch(data, start, end);
+      quicksortH(data, start, pivot[0] - 1);
+      quicksortH(data, pivot[1] + 1, end);
+    }
   }
   public static void insertionsort(int[] ary, int start, int end) {
     for (int idx = start + 1; idx < end + 1; idx++) {
